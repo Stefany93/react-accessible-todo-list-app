@@ -10,7 +10,6 @@ const DATA = [
   { id: "todo-1", name: "Sleep", completed: false },
   { id: "todo-2", name: "Repeat", completed: false }
 ];
-const taskList = props.tasks?.map((task) => task.name);
 
 root.render(
   <React.StrictMode>
