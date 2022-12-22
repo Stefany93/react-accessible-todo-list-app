@@ -7,6 +7,9 @@ import FilterButton from "./components/FilterButton";
 
 export default function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  function deleteTask(id) {
+    console.log(id)
+  }
   function addTask(name)
   {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
@@ -28,6 +31,7 @@ export default function App(props) {
       completed={task.completed}
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
+      deleteTask={deleteTask}
     />
   ));
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
