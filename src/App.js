@@ -7,8 +7,21 @@ import FilterButton from "./components/FilterButton";
 
 export default function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map((task) => {
+    // if this task has the same ID as the edited task
+      if (id === task.id) {
+        //
+        return {...task, name: newName}
+      }
+      return task;
+    });
+    setTasks(editedTaskList);
+  }
   function deleteTask(id) {
-    console.log(id)
+    const remainingTasks = tasks.filter((task) => id !== task.id);
+    setTasks(remainingTasks);
   }
   function addTask(name)
   {
@@ -32,6 +45,7 @@ export default function App(props) {
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
+      editTask={editTask}
     />
   ));
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
